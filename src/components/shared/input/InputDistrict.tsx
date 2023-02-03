@@ -11,7 +11,7 @@ export const InputDistrict = () => {
 
     const changedDistrict = (e: any) => setDistrict(e.target.value);
 
-    if (isValidCep(cep) && district == '' && !isError) {
+    if (isValidCep(cep) && district === '' && !isError) {
         autoFill();
     }
 
@@ -47,7 +47,7 @@ export const InputDistrict = () => {
                         </FormHelperText>
                     ) : ''
             }
-            {isError && district == '' && isValidCep(cep) ?
+            {isError && district === '' && isValidCep(cep) ?
                 (<Alert status='error'>
                     <AlertIcon />
                     O cep informado não foi encontrado, digite o endereço manualmente.

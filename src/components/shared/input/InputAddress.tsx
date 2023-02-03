@@ -11,7 +11,7 @@ export const InputAddress = () => {
 
     const changedAddress = (e: any) => setAddress(e.target.value);
 
-    if (isValidCep(cep) && address == '' && !isError) {
+    if (isValidCep(cep) && address === '' && !isError) {
         autoFill();
     }
 
@@ -46,7 +46,7 @@ export const InputAddress = () => {
                         </FormHelperText>
                     ) : ''
             }
-            {isError && address == '' && isValidCep(cep) ?
+            {isError && address === '' && isValidCep(cep) ?
                 (<Alert status='error'>
                     <AlertIcon />
                     O Cep informado não foi encontrado, digite o endereço manualmente.

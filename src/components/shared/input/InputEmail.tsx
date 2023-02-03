@@ -1,4 +1,5 @@
-import { FormControl, FormErrorMessage, FormHelperText, FormLabel, Input } from "@chakra-ui/react";
+import { EmailIcon } from "@chakra-ui/icons";
+import { FormControl, FormErrorMessage, FormLabel, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 
 import { useContext } from "react";
 import { isValidEmail } from "../../../services/isValidEmail";
@@ -16,13 +17,19 @@ export const InputEmail = () => {
             width={'100%'}
         >
             <FormLabel>Email</FormLabel>
-            <Input
-                type='email'
-                value={email}
-                onChange={changedEmail}
-                isRequired
-                errorBorderColor='gray.300'
-            />
+            <InputGroup>
+                <InputLeftElement
+                    pointerEvents='none'
+                    children={<EmailIcon color='gray.300' />}
+                />
+                <Input
+                    type='email'
+                    value={email}
+                    onChange={changedEmail}
+                    isRequired
+                    errorBorderColor='gray.300'
+                />
+            </InputGroup>
             {email === '' || isValidEmail(email) ? '' :
                 (
                     <FormErrorMessage>

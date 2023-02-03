@@ -1,8 +1,10 @@
-import { useContext } from "react";
 import {
+    Alert,
+    AlertIcon,
     Button,
     Flex,
 } from '@chakra-ui/react';
+import { useContext, useState } from 'react';
 
 import { isValidName } from "../services/isValidName";
 import { AppContext } from "./AppContext";
@@ -23,6 +25,7 @@ import { InputState } from "./shared/input/InputState";
 import { isValidCPF } from "../services/isValidCPF";
 
 export const FormRegistration = () => {
+    const [isFormSend, setIsFormSend] = useState<boolean>(false);
     const userContext = useContext(AppContext);
 
     let isError = !isValidName(userContext.name) || !isValidPhone(userContext.phone) || !isValidEmail(userContext.email) || !isValidCPF(userContext.CPF) || !isValidCep(userContext.cep);
@@ -30,7 +33,8 @@ export const FormRegistration = () => {
     return (
         <Flex
             direction={'column'}
-            width={'50%'}
+            width={'80%'}
+            maxWidth={'600px'}
             gap={'10px'}
         >
             <InputName />
@@ -50,10 +54,33 @@ export const FormRegistration = () => {
                 mt={4}
                 colorScheme='blackAlpha'
                 type='submit'
-                onClick={() => console.log(userContext)}
+                onClick={() => {
+                    console.log('Usuário cadastrado:', userContext);
+                    setIsFormSend(true);
+                    setTimeout(() => {
+                        userContext.setName('');
+                        userContext.setPhone('');
+                        userContext.setCPF('');
+                        userContext.setEmail('');
+                        userContext.setMotherName('');
+                        userContext.setFatherName('');
+                        userContext.setCep('');
+                        userContext.setAddress('');
+                        userContext.setDistrict('');
+                        userContext.setCity('');
+                        userContext.setState('');
+                        setIsFormSend(false);
+                    }, 3000);
+                }}
             >
                 Enviar
             </Button>
+            {isFormSend ? (
+                <Alert status='success'>
+                    <AlertIcon />
+                    Formulário enviado com sucesso
+                </Alert>
+            ) : ''}
         </Flex>
     );
 }
