@@ -28,11 +28,11 @@ export const InputName = () => {
                 name.length < 2 ?
                     (
                         <FormHelperText>
-                            O nome está incompleto!
+                            O nome está incompleto, deve possuir acima de 2 letras!
                         </FormHelperText>
                     ) : (
                         <FormErrorMessage>
-                            O nome contém caracteres inválidos
+                            O nome contém caracteres inválidos, certifique que não contenha espaço no inicio e fim.
                         </FormErrorMessage>
                     )}
         </FormControl>

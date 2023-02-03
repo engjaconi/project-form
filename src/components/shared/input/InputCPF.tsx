@@ -16,7 +16,7 @@ export const InputCPF = () => {
             width={'100%'}
         >
             <FormLabel>CPF</FormLabel>
-            <Input type='text' value={CPF} onChange={changedCPF} isRequired errorBorderColor='gray.300' minLength={11} maxLength={14} />
+            <Input type='string' value={CPF} onChange={changedCPF} isRequired errorBorderColor='gray.300' minLength={11} maxLength={14} />
             {CPF === '' || isValidCPF(CPF) ? '' : (
                 <FormErrorMessage>CPF inválido!</FormErrorMessage>
             )}

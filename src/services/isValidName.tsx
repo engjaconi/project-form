@@ -1,7 +1,4 @@
 export function isValidName(name: string): boolean {
-
-    const regexName = /^[a-z]+?$/i;
-
-    if (name.length < 2) { return false;}
+    const regexName = /^([a-zÀ-ü]){2,}( ([a-zÀ-ü])+)*$/i;
     return regexName.test(name);
 }
